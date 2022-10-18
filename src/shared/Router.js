@@ -9,7 +9,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="detail/:id" element={<Detail />} />
+        <Route path="detail/" element={<Detail />} />
         {/* path 주소는 대문자 안적음 */}
         <Route path="write" element={<Write />} />
       </Routes>
