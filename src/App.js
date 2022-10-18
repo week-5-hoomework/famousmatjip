@@ -1,4 +1,5 @@
 import Router from "./shared/Router";
+import "tailwindcss/tailwind.css";
 
 function App() {
   return <Router />;
