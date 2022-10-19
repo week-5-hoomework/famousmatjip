@@ -52,23 +52,18 @@ export const __deleteOne = createAsyncThunk(
   }
 );
  */
-//리듀서
+//진영 리듀서
 const homeSlice = createSlice({
   name: "matjip",
   initialState,
   reducers: {
-    //리듀서 비워도 될듯
-    // getOne: (state, action) => {
-    //   console.log(state.matjip, action.payload);
-    // },
   },
   extraReducers: {
-    //리스트 가져오기
+    //여기서부터 made by 진영
     [__getOne.pending]: (state) => {
       state.isLoading = true;
     },
 
-    //원본 __getOne.fulfilled 원본
     [__getOne.fulfilled]: (state, action) => {
       // console.log("fulfilled 상태 action.payload", action.payload);
       state.isLoading = false;
@@ -92,22 +87,6 @@ const homeSlice = createSlice({
     },
 
     [__deleteOne.rejected]: () => {},
-
-    //필터 건져 리스트 가져오기? => 이거 필요없는듯
-    /*     [__filterOne.pending]: (state) => {
-      state.isLoading = true;
-    },
-
-    [__filterOne.fulfilled]: (state, action) => {
-      console.log("fulfilled 상태", action.payload, state.matjip);
-      state.isLoading = false;
-      state.matjip = [...action.payload];
-    },
-
-    [__filterOne.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload; 
-    }, */
   },
 });
 

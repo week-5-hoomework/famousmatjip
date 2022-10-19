@@ -1,11 +1,12 @@
 // src/redux/modules/config/configStore.js
 
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 
 /**
  * import 해온 것은 slice.reducer 입니다.
  */
-import matjip from "../modules/home";
+
+import matjip from '../modules/matjip';
 
 /**
  * 모듈(Slice)이 여러개인 경우
@@ -15,6 +16,7 @@ import matjip from "../modules/home";
  * 이것을 각각 모듈로 구현한 다음에 아래 코드로 2개의 모듈을 스토어에 연결해준 것 입니다.
  */
 const store = configureStore({
-  reducer: { matjip }, //여기에 reducer name 을 써야함 ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ헝헝
+  // configStore라는 메소드 하나로 모듈을 합치는 것과 스토어를 생성하는 것을 한번에 하고 있다.
+  reducer: { matjip },
 });
 export default store;
