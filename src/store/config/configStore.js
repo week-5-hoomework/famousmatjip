@@ -1,11 +1,11 @@
 // src/redux/modules/config/configStore.js
 
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 
 /**
  * import 해온 것은 slice.reducer 입니다.
  */
-import boardSlice from "../modules/board";
+import matjip from '../modules/matjip';
 
 /**
  * 모듈(Slice)이 여러개인 경우
@@ -16,6 +16,6 @@ import boardSlice from "../modules/board";
  */
 const store = configureStore({
   // configStore라는 메소드 하나로 모듈을 합치는 것과 스토어를 생성하는 것을 한번에 하고 있다.
-  reducer: { boardSlice },
+  reducer: { matjip },
 });
 export default store;

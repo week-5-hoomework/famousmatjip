@@ -1,9 +1,8 @@
-function Button() {
-  return (
-    <div>
-      <button className="py-2 px-4 font-semibold shadow-md rounded-lg hover:bg-green-700 ">수정하기/삭제하기</button>
-    </div>
-  );
-}
+import { Children } from 'react';
+import React, { useEffect, useState } from 'react';
+
+const Button = ({ text, onClick, children }) => {
+  return <button onClick={onClick}>{children}</button>;
+};
 
 export default Button;
