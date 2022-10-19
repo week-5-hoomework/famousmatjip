@@ -1,15 +1,7 @@
-import React from "react";
-import Button from "../component/write/Button";
-import Layout from "../component/write/Layout";
-import Navbar from "../component/write/Navbar";
+import React from 'react';
 
 function Write() {
-  return (
-    <Layout>
-      <Navbar />
-      <Button />
-    </Layout>
-  );
+  return <div></div>;
 }
 
 export default Write;
