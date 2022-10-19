@@ -1,13 +1,11 @@
-import React from 'react';
+import List from '../component/detail/LIst';
+import Layout from '../component/detail/Layout';
 
 function Detail() {
-    return (
-        <div>디테일</div>
-    )
+  return (
+    <Layout>
+      <List />
+    </Layout>
+  );
 }
-
-
-
-
-
 export default Detail;
