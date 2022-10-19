@@ -10,7 +10,15 @@ const Page = () => {
   const dispatch = useDispatch();
   const { number, isLoading } = useSelector((state) => state.counter);
   console.log(number, isLoading);
-
+  const [title, setTitle] = useState(); //키값 벨류로 객체로 묶어라
+  const [content, setContent] = useState(); //인풋과 셀렉트값을 유즈스테이트에 담아준다
+  const [location, setLocation] = useState();
+  const [user, setUser] = useState();
+  //const data = {
+  //title:title,
+  //content:contet:
+  //location:location
+  //}
   const onChangeHandler = (evnet) => {
     const { value } = evnet.target;
     // setNumber(+value);
@@ -32,8 +40,16 @@ const Page = () => {
     setTodos(data);
   };
 
-  const onSubmitHandler = (todo) => {
-    dispatch(__postCounter(todo));
+  const onSubmitHandler = (e) => {
+    e.preventDefault(); //기본적인 이벤트 있는거 없애기
+    const data = {
+      user: user,
+      location: location,
+      title: title,
+      content: content,
+    };
+    console.log(data);
+    dispatch(__postCounter(data)); //넘어오는값
   };
 
   const onClickDeleteButtonHandler = (todoId) => {
@@ -50,26 +66,41 @@ const Page = () => {
   }
   return (
     <>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          onSubmitHandler(todo);
-        }}
-      >
+      <form onSubmit={onSubmitHandler}>
         <input
           className="bg-gray-100 m-0 p-10"
           type="text"
           onChange={(ev) => {
             const { value } = ev.target;
-            setTodo({
-              ...todo,
-              title: value,
-            });
+            setTitle(value);
           }}
         />
-        <button className="bg-gray-300">작성자</button>
+        <br />
+        <input
+          className="bg-gray-100 m-0 p-10"
+          type="text"
+          onChange={(ev) => {
+            const { value } = ev.target;
+            setContent(value);
+          }}
+        />
+        <br />
+        <input
+          className="bg-gray-100 m-0 p-10"
+          type="text"
+          onChange={(ev) => {
+            const { value } = ev.target;
+            setUser(value);
+          }} //useState로 각자
+        />
+        <button className="bg-gray-300">작성자🌝</button>
       </form>
-      <select>
+      <select
+        onChange={(ev) => {
+          const { value } = ev.target;
+          setLocation(value);
+        }}
+      >
         <option value="all">지역선택</option>
         <option value="seoul">서울</option>
         <option value="busan">부산</option>

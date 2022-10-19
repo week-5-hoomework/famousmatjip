@@ -16,6 +16,7 @@ export const __getCounter = createAsyncThunk(
 export const __postCounter = createAsyncThunk(
   "postCounter/getPostCounter",
   async (todo, thunkAPI) => {
+    console.log(todo);
     // console.log(payload);
     // todo가 payload이다...그래서 밑에 ,todo적는것임
     try {
@@ -71,3 +72,6 @@ const counterSlice = createSlice({
 export const {} = counterSlice.actions;
 // reducer 는 configStore에 등록하기 위해 export default 합니다.
 export default counterSlice.reducer;
+
+//짜고 코드를 이해하고 넘어가야함 console.log다 찍어보기
+// 코드 무조건 이해해야함!!
