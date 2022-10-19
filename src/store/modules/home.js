@@ -57,7 +57,7 @@ const homeSlice = createSlice({
   name: "matjip",
   initialState,
   reducers: {
-    //리듀서에 뭐라고 적는지 모르곘다
+    //리듀서 비워도 될듯
     // getOne: (state, action) => {
     //   console.log(state.matjip, action.payload);
     // },
@@ -70,20 +70,11 @@ const homeSlice = createSlice({
 
     //원본 __getOne.fulfilled 원본
     [__getOne.fulfilled]: (state, action) => {
-      console.log("fulfilled 상태 action.payload", action.payload);
+      // console.log("fulfilled 상태 action.payload", action.payload);
       state.isLoading = false;
       state.matjip = [...action.payload];
       console.log("fulfilled state.matjip", state.matjip);
     },
-
-    /*     //수정본 __getOne.fulfilled 수정본
-    [__getOne.fulfilled]: (state, action) => {
-      console.log("fulfilled 상태", action.payload, state.matjip);
-      state.isLoading = false;
-      state.matjip = state.matjip.filter((a) => {
-        a.location == action.payload.location;
-      });
-    }, */
 
     [__getOne.rejected]: (state, action) => {
       state.isLoading = false;
@@ -102,7 +93,7 @@ const homeSlice = createSlice({
 
     [__deleteOne.rejected]: () => {},
 
-    //필터 건져 리스트 가져오기
+    //필터 건져 리스트 가져오기? => 이거 필요없는듯
     /*     [__filterOne.pending]: (state) => {
       state.isLoading = true;
     },

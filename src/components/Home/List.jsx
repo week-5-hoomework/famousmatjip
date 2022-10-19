@@ -4,11 +4,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __deleteOne, __getOne } from "../../store/modules/home";
-// import locationValue from "./Nav";
-import { locationValue } from "./Nav";
-import { whereValue } from "./Nav";
 
-const List = () => {
+const List = ({ where }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, error, matjip } = useSelector((state) => state.matjip);
@@ -29,17 +26,14 @@ const List = () => {
     dispatch(__deleteOne(number));
   };
 
-  // const selectLocation = matjip.filter((a) => {
-  //   return a.location == locationValue;
-  // });
-
-  console.log("List에서 locationValue 확인", locationValue());
-  console.log("List에서 whereValue 확인", whereValue);
-
+  console.log("List에서 location", where);
+  const newMatjip = matjip.filter((house) =>
+    where === `default` ? true : where === house.location
+  );
   return (
-    <div className="max-w-[1200px] m-auto">
+    <div className="max-w-[1200px] m-auto pb-10">
       <div className="grid grid-cols-3 w-11/12 m-auto gap-y-10 gap-x-6">
-        {matjip.map((house) => (
+        {newMatjip.map((house) => (
           <div
             className="relative bg-gray-300 h-80 max-w-[300px] py-8 rounded-[20px]"
             key={house.id}
@@ -78,6 +72,84 @@ const List = () => {
     </div>
   );
 };
+
+/* {matjip.map((house) => {
+  if (where == "default") {
+    return (
+      <div
+        className="relative bg-gray-300 h-80 max-w-[300px] py-8 rounded-[20px]"
+        key={house.id}
+      >
+        <button
+          className="absolute top-1 right-2 text-right p-2"
+          onClick={() => onClickDeleteButtonHandler(house.id)}
+        >
+          ❌
+        </button>
+        <div className="text-center m-auto bg-red-200 w-[80px] h-[40px] py-2 rounded-full hover:bg-red-400">
+          <h3 className="">{house.location}</h3>
+        </div>
+        <p
+          className="text-center w-10/12 m-auto py-3 hover:cursor-pointer"
+          onClick={() => {
+            navigate(`/detail/${house.id}`);
+          }}
+        >
+          {house.title}
+        </p>
+        <div
+          className="w-10/12 m-auto h-40 p-2 bg-white hover:cursor-pointer"
+          onClick={() => {
+            navigate(`/detail/${house.id}`);
+          }}
+        >
+          {house.content}
+        </div>
+        <div className="absolute bottom-4 left-6 text-xs ">
+          작성자 : {house.user}
+        </div>
+      </div>
+    );
+  }
+  if (house.location == where) {
+    return (
+      <div
+        className="relative bg-gray-300 h-80 max-w-[300px] py-8 rounded-[20px]"
+        key={house.id}
+      >
+        <button
+          className="absolute top-1 right-2 text-right p-2"
+          onClick={() => onClickDeleteButtonHandler(house.id)}
+        >
+          ❌
+        </button>
+        <div className="text-center m-auto bg-red-200 w-[80px] h-[40px] py-2 rounded-full hover:bg-red-400">
+          <h3 className="">{house.location}</h3>
+        </div>
+        <p
+          className="text-center w-10/12 m-auto py-3 hover:cursor-pointer"
+          onClick={() => {
+            navigate(`/detail/${house.id}`);
+          }}
+        >
+          {house.title}
+        </p>
+        <div
+          className="w-10/12 m-auto h-40 p-2 bg-white hover:cursor-pointer"
+          onClick={() => {
+            navigate(`/detail/${house.id}`);
+          }}
+        >
+          {house.content}
+        </div>
+        <div className="absolute bottom-4 left-6 text-xs ">
+          작성자 : {house.user}
+        </div>
+      </div>
+    );
+  }
+  return;
+})} */
 
 export default List;
 
@@ -134,9 +206,9 @@ export default List;
     {
       "id": 8,
       "user": "승훈",
-      "location": "인천",
-      "title": "인천 맛집",
-      "content": "여기를 안와봤다면 인천 왔다 말하지마라"
+      "location": "부천",
+      "title": "인천 아닌 부천 맛집",
+      "content": "여기를 안와봤다면 부천 왔다 말하지마라"
     },
     {
       "id": 9,

@@ -1,24 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export const locationValue = (value) => {
-  return console.log("lV내부콘솔", value);
-};
-
-export const whereValue = locationValue();
-
-const Nav = () => {
+const Nav = ({ setWhere }) => {
   const navigate = useNavigate();
 
-  // const locationValue = (value) => {
-  //   return console.log(value);
-  // };
-
   const handleChange = (e) => {
-    locationValue(e.target.value);
+    setWhere(e.target.value);
   };
-
-  console.log("whereValue 확인", whereValue);
 
   return (
     <div className="w-4/5 m-auto">
@@ -33,7 +21,7 @@ const Nav = () => {
           onChange={handleChange}
         >
           <option value="default">
-            {/* defaultValue 속성 지우거나 selected 같은 것 찾아보기 */}
+            {/*serWhere 기본값으로 씀*/}
             전국 &nbsp;&nbsp; ⮟
           </option>
           <option value="서울">서울</option>
