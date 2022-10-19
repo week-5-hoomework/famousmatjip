@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { __deleteOne, __getOne } from "../../store/modules/home";
+import { __deleteOne, __getOne } from "../../store/modules/matjip";
 
 const List = ({ where }) => {
   const dispatch = useDispatch();

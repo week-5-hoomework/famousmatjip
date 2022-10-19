@@ -5,7 +5,7 @@ import { configureStore } from "@reduxjs/toolkit";
 /**
  * import 해온 것은 slice.reducer 입니다.
  */
-import matjip from "../modules/home";
+import matjip from "../modules/matjip";
 
 /**
  * 모듈(Slice)이 여러개인 경우
