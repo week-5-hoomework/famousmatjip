@@ -11,19 +11,26 @@ const Page = () => {
   const dispatch = useDispatch();
   const { number, isLoading } = useSelector(state => state.counter);
   console.log(number, isLoading);
-  const [title, setTitle] = useState(); //키값 벨류로 객체로 묶어라
-  const [content, setContent] = useState(); //인풋과 셀렉트값을 유즈스테이트에 담아준다
-  const [location, setLocation] = useState();
-  const [user, setUser] = useState();
+  const [title, setTitle] = useState(''); //키값 벨류로 객체로 묶어라
+  const [content, setContent] = useState(''); //인풋과 셀렉트값을 유즈스테이트에 담아준다
+  const [location, setLocation] = useState('default');
+  const [user, setUser] = useState('');
+
   const onSubmitHandler = e => {
     e.preventDefault(); //기본적인 이벤트 있는거 없애기
+
+    console.log(user);
+
+    if (user.trim() === '' || title.trim() === '' || content.trim() === '' || location === 'default')
+      return alert('빈칸없이 채워주세요~');
+
     const data = {
       user: user,
       location: location,
       title: title,
       content: content,
     };
-    console.log(data);
+
     dispatch(__postCounter(data)); //넘어오는값
   };
 
@@ -35,48 +42,23 @@ const Page = () => {
   if (isLoading) {
     return <div>로딩중</div>;
   }
-  // console.log(user);
-  // if (user.trim() === '' || title.trim() === '' || content.trim() === '') return alert('빈칸없이 채워주세요~');
-
-  //const data = {
-  //title:title,
-  //content:contet:
-  //location:location
-  //}
-  // const onChangeHandler = evnet => {
-  //   const { value } = evnet.target;
-  //   // setNumber(+value);
-  // };
-  // const onClickAddNumberHandler = () => {
-  //   //청크불러온것 //청크하나 추가될때마다 그 3개가 늘어난다
-  // };
-
-  //
-  // 새롭게 생성하는 todo를 관리하는 state
-  // const [todo, setTodo] = useState({
-  //   title: "",
-  // });
-
-  // const [todos, setTodos] = useState(null);
-
-  // const fetchTodos = async () => {
-  //   const { data } = await axios.get("http://localhost:3001/matjip");
-  //   setTodos(data);
-  // };
-
-  // const onClickDeleteButtonHandler = (todoId) => {
-  //   axios.delete(`http://localhost:3001/matjip/${todoId}`);
-  // };
 
   return (
     <>
       <form onSubmit={onSubmitHandler}>
+        {/* { user.trim() === '' || title.trim() === '' || content.trim() === '' || location === 'default'
+      ? alert('빈칸없이 채워주세요~')
+      : (
+        `머냐고 젠장`
+      );
+      } */}
         <br />
         <input
           className="bg-gray-100 m-0 p-10"
           type="text"
           // ref={contentRef}
           placeholder="작성자"
+          // value={user}
           onChange={ev => {
             const { value } = ev.target;
             setUser(value);
@@ -88,6 +70,7 @@ const Page = () => {
           type="text"
           // ref={userRef}
           placeholder="맛집이름"
+          // value={title}
           onChange={ev => {
             const { value } = ev.target;
             setTitle(value);
@@ -99,6 +82,7 @@ const Page = () => {
           type="text"
           // ref={titleRef}
           placeholder="내용작성"
+          // value={content}
           onChange={ev => {
             const { value } = ev.target;
             setContent(value);
@@ -106,6 +90,7 @@ const Page = () => {
         />
         <br />
         <select
+          // value={location}
           onChange={ev => {
             const { value } = ev.target;
             setLocation(value);
@@ -116,22 +101,6 @@ const Page = () => {
           <option value="대구">대구</option>
           <option value="제주">제주</option>
         </select>
-        {/* <div>
-        {number.map((todo) => (
-          <div key={todo.id}>
-            {todo.title}
-            <button
-              className="bg-green-100 m-0 p-10"
-              type="button"
-              onClick={() => onClickDeleteButtonHandler(todo.id)}
-            >
-              삭제하기
-            </button>
-            <input type="number" onChange={onChangeHandler} />
-            <button onClick={onClickAddNumberHandler}>더하기</button>
-          </div>
-        ))}
-      </div> */}
         <button className="bg-gray-300">저장하기🌝</button>
       </form>
     </>

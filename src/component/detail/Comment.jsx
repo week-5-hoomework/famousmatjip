@@ -3,8 +3,10 @@ import { useState } from 'react';
 import CommentInput from './CommentInput';
 import CommentList from './CommentList';
 
-const Comment = props => {
+const Comment = () => {
   const [show, setShow] = useState(false);
+  // const Comment = () => {
+  //   const [show, setShow] = useState(true);
 
   return (
     <div className="bg-green-400">
