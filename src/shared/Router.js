@@ -1,9 +1,9 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Detail from "../page/Detail";
-import Home from "../page/Home";
-import Write from "../page/Write";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Detail from '../page/Detail';
+import Home from '../page/Home';
+import Write from '../page/Write';
+import { Link } from 'react-router-dom';
 
 const Router = () => {
   return (
@@ -13,9 +13,7 @@ const Router = () => {
           <Link to="/" className="flex-auto py-3 text-xl">
             🏠
           </Link>
-          <h1 className="flex-auto text-right text-xl py-3 font-bold">
-            맛집퍼뜩가조
-          </h1>
+          <h1 className="flex-auto text-right text-xl py-3 font-bold">맛집퍼뜩가조</h1>
         </div>
       </header>
       <Routes>
