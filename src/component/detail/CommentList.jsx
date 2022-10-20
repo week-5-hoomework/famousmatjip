@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { __getComment } from '../../store/modules/comment';
+import { __getComment, __deleteComment } from '../../store/modules/comment';
 import { useParams } from 'react-router-dom';
 
 function CommnetList() {
   const dispatch = useDispatch();
   const { isLoading, error, comment } = useSelector(state => state.comment);
   const param = useParams();
+  //상현이가 만듬
+  const onDelete = id => {
+    dispatch(__deleteComment(id));
+  }; //preventDefaul는 폼있때만 보통 쓴다
 
   useEffect(() => {
     dispatch(__getComment());
@@ -28,6 +32,14 @@ function CommnetList() {
 
   console.log(result);
 
+  // function del() {
+  //   if (window.confirm('삭제 하시겠습니까?')) {
+  //     fetch(`http://localhost:3000/detail/1/${user.id}`, {
+  //       method: 'DELETE',
+  //     });
+  //   }
+  // }
+
   return (
     <div className="w-full m-auto">
       {result.map(a => (
@@ -36,7 +48,9 @@ function CommnetList() {
           <div className=" bg-slate-400 mx-3 p-4 col-span-2">{a.memo}</div>
           <div className="grid grid-cols-2">
             <button className=" bg-yellow-300 ">수정</button>
-            <button className="bg-stone-500">삭제</button>
+            <button type="button" onClick={() => onDelete(a.id)} className="bg-stone-500">
+              삭제
+            </button>
           </div>
         </div>
       ))}
