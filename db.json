@@ -5,7 +5,7 @@
       "user": "진영",
       "location": "부산",
       "title": "수영 할매국밥",
-      "content": "sdfds"
+      "content": ""
     },
     {
       "id": 3,
@@ -60,53 +60,14 @@
       "title": "작성자",
       "content": "맛집이름",
       "id": 12
-    },
-    {
-      "user": "작성자",
-      "title": "제목",
-      "content": "내용",
-      "id": 13
-    },
-    {
-      "user": "작성자",
-      "title": "제목",
-      "content": "내용",
-      "id": 14
-    },
-    {
-      "user": "작성자",
-      "title": "제목",
-      "content": "내용",
-      "id": 15
-    },
-    {
-      "user": "작성자",
-      "title": "제목",
-      "content": "내용",
-      "id": 16
-    },
-    {
-      "user": "작성자",
-      "title": "제목",
-      "content": "내용",
-      "id": 17
-    },
-    {
-      "user": "작성자",
-      "title": "제목",
-      "content": "내용",
-      "id": 18
-    },
-    {
-      "id": 19
     }
   ],
   "comment": [
     {
       "matjipId": 1,
       "id": 1,
-      "nickname": "진영이얌",
-      "memo": "진영이내용"
+      "nickname": "sfsf",
+      "memo": "sdfsfsdf"
     },
     {
       "matjipId": 1,
@@ -117,8 +78,8 @@
     {
       "matjipId": 1,
       "id": 3,
-      "nickname": "하은이얌",
-      "memo": "으라차차"
+      "nickname": "sdfsdf",
+      "memo": "sfsfsd"
     },
     {
       "matjipId": 1,

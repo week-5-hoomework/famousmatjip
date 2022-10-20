@@ -10,10 +10,18 @@ const initialState = {
 export const __getComment = createAsyncThunk('getComment', async (payload, thunkAPI) => {
   try {
     const data = await axios.get(`http://localhost:3001/comment`);
-    console.log(data);
+
     return thunkAPI.fulfillWithValue(data.data);
   } catch (error) {
-    console.log(error);
+    return thunkAPI.rejectWithValue(error);
+  }
+});
+
+export const __editComment = createAsyncThunk('__editComment', async (payload, thunkAPI) => {
+  try {
+    await axios.patch(`http://localhost:3001/comment/${payload.id}`, payload);
+    return thunkAPI.fulfillWithValue(payload);
+  } catch (error) {
     return thunkAPI.rejectWithValue(error);
   }
 });
@@ -28,12 +36,26 @@ const commentSlice = createSlice({
     },
 
     [__getComment.fulfilled]: (state, action) => {
-      console.log('fulfilled');
       state.isLoading = false;
       state.comment = action.payload;
     },
 
     [__getComment.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
+    [__editComment.pending]: state => {
+      state.isLoading = true;
+    },
+
+    [__editComment.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      const idx = state.comment.findIndex(a => a.matjipId === action.payload.matjipId);
+      state.comment[idx] = action.payload;
+    },
+
+    [__editComment.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },

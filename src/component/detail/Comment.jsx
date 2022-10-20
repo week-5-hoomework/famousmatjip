@@ -3,7 +3,7 @@ import { useState } from 'react';
 import CommentInput from './CommentInput';
 import CommentList from './CommentList';
 
-const Comment = () => {
+const Comment = props => {
   const [show, setShow] = useState(false);
 
   return (
@@ -21,7 +21,7 @@ const Comment = () => {
         {!show ? null : (
           <div className="w-4/5 m-auto">
             <CommentInput />
-            <CommentList />
+            <CommentList></CommentList>
           </div>
         )}
       </div>
