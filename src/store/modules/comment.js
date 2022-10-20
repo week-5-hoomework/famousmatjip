@@ -26,6 +26,18 @@ export const __editComment = createAsyncThunk('__editComment', async (payload, t
   }
 });
 
+//상현 delete 만들기
+export const __deleteComment = createAsyncThunk('deleteComment', async (payload, thunkAPI) => {
+  try {
+    await axios.delete(`http://localhost:3001/comment/${payload}`);
+    console.log(payload);
+    return thunkAPI.fulfillWithValue(payload);
+  } catch (error) {
+    console.log(error);
+    return thunkAPI.rejectWithValue(error);
+  }
+});
+//
 const commentSlice = createSlice({
   name: 'comment',
   initialState,
@@ -59,6 +71,20 @@ const commentSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    //상현 만듬 리듀서
+    [__deleteComment.pending]: () => {},
+
+    [__deleteComment.fulfilled]: (state, action) => {
+      console.log('deleteOne fullfilled 상태', action, action.payload);
+      state.comment = state.comment.filter(a => {
+        return a.id !== action.payload;
+      });
+    },
+    [__deleteComment.rejected]: () => {},
+    // [__deleteComment.rejected]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
   },
 });
 

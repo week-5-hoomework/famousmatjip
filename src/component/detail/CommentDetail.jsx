@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { __getComment, __editComment } from '../../store/modules/comment';
+import { __getComment, __editComment, __deleteComment } from '../../store/modules/comment';
 
 function CommentDetail({ a }) {
   const dispatch = useDispatch();
@@ -25,6 +25,11 @@ function CommentDetail({ a }) {
     }
     setIsEdit(!isEdit);
   };
+
+  //상현이가 만듬
+  const onDelete = id => {
+    dispatch(__deleteComment(id));
+  }; //preventDefaul는 폼있때만 보통 쓴다
 
   console.log(a);
 
@@ -64,7 +69,9 @@ function CommentDetail({ a }) {
               <button className=" bg-yellow-300 " onClick={() => editHandler()}>
                 수정
               </button>
-              <button className="bg-stone-500">삭제</button>
+              <button className="bg-stone-500" onClick={() => onDelete(a.id)}>
+                삭제
+              </button>
             </div>
           </div>
         )}

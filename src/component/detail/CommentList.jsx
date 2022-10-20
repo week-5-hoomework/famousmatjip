@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { __getComment, __editComment } from '../../store/modules/comment';
+import { __getComment, __editComment, __deleteComment } from '../../store/modules/comment';
 import { useParams } from 'react-router-dom';
 import CommentDetail from './CommentDetail';
 
@@ -27,6 +27,14 @@ function CommentList() {
   });
 
   console.log(result);
+
+  // function del() {
+  //   if (window.confirm('삭제 하시겠습니까?')) {
+  //     fetch(`http://localhost:3000/detail/1/${user.id}`, {
+  //       method: 'DELETE',
+  //     });
+  //   }
+  // }
 
   return (
     <div className="w-full m-auto">
