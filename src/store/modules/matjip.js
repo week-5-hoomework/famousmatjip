@@ -1,5 +1,5 @@
 // src/redux/modules/todosSlice.js
-import { configureStore, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 //미들웨어 청크 써서 디스패치한 함수 만들고 여기서 리듀서로 보낼거 리턴해주기 (이번에는 엑슽트라 리듀서))
 
@@ -51,7 +51,7 @@ export const __deleteOne = createAsyncThunk('deleteOne', async (payload, thunkAP
 
 export const __getmatjip = createAsyncThunk('getmatjips', async (payload, thunkAPI) => {
   try {
-    const data = await axios.get('http://localhost:3001/matjip');
+    const data = await axios.get(`http://localhost:3001/matjip`);
     return thunkAPI.fulfillWithValue(data.data);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -63,7 +63,7 @@ export const __patchMatjips = createAsyncThunk('patchMatjips', async (payload, t
   console.log(payload);
   try {
     const data = await axios.patch(`http://localhost:3001/matjip/${payload.id}`, payload);
-    return thunkAPI.fulfillWithValue(data.data);
+    return thunkAPI.fulfillWithValue(payload);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
   }

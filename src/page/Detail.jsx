@@ -1,10 +1,12 @@
-import List from '../component/detail/LIst';
+import CommentList from '../component/detail/CommentList';
+import Form from '../component/detail/Form';
 import Layout from '../component/detail/Layout';
 
 function Detail() {
   return (
     <Layout>
-      <List />
+      <Form />
+      <CommentList />
     </Layout>
   );
 }

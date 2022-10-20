@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CommentList = () => {
-  return <div>delet get(부모 컴포넌트 여기서 쓰세용) post(get 안에 post) patch</div>;
+  return <div>댓글확인</div>;
 };
 
 export default CommentList;

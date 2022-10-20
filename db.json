@@ -5,14 +5,14 @@
       "user": "진영",
       "location": "부산",
       "title": "수영 할매국밥",
-      "content": "여가 진또배이 로컬 맛집"
+      "content": "sdfds"
     },
     {
       "id": 3,
       "user": "하은",
       "location": "대구",
       "title": "수성못 맛집",
-      "content": "여기를 오려고 대구 온다 아니야?"
+      "content": "xbvbc"
     },
     {
       "id": 4,
@@ -33,7 +33,7 @@
       "user": "승훈",
       "location": "부천",
       "title": "인천 아닌 부천 맛집",
-      "content": "여기를 안와봤다면 부천 왔다 말하지마라"
+      "content": "됐다됐따"
     },
     {
       "id": 9,
@@ -41,6 +41,32 @@
       "location": "서울",
       "title": "멍멍ㅁ어어멍멈ㅁ엉",
       "content": "멍멈ㅁ엉멍멍"
+    }
+  ],
+  "comment": [
+    {
+      "nickname": "진영이얌",
+      "memo": "수정하기",
+      "matjipId": 1,
+      "id": 1
+    },
+    {
+      "nickname": "상현이얌",
+      "memo": "최고야",
+      "matjipId": 1,
+      "id": 2
+    },
+    {
+      "nickname": "하은이얌",
+      "memo": "으라차차",
+      "matjipId": 1,
+      "id": 3
+    },
+    {
+      "nickname": "경태얌",
+      "memo": "너희는 오늘 무사히 제룰할 것이다~!",
+      "matjipId": 1,
+      "id": 4
     }
   ]
 }

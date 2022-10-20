@@ -2,40 +2,43 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { __getmatjip, __patchMatjips } from '../../store/modules/matjip';
+import { __getmatjip, __getOne, __patchMatjips } from '../../store/modules/matjip';
 import Button from '../Button';
 
-const Form = props => {
+const Form = () => {
   const dispatch = useDispatch();
   const param = useParams();
   const navigate = useNavigate();
 
   const [isEdit, setIsEdit] = useState(false);
+  const [좋아요, 아주좋아요] = useState(0);
   const [text, setText] = useState('');
+
   const togglelIsEdit = () => {
     if (isEdit) {
-      const data = { ...result[0], content: text };
+      const data = { ...result, content: text };
       dispatch(__patchMatjips(data));
-      console.log(data);
+      console.log(result);
     }
     setIsEdit(!isEdit);
   };
 
   const { isLoading, error, matjip } = useSelector(state => state.matjip);
+
   useEffect(() => {
-    //effect 구문에 생성한 함수를 넣어서 실행합니다.
     dispatch(__getmatjip());
   }, [dispatch]);
 
   if (isLoading) {
     return <div>로딩 중....</div>;
   }
+
   if (error) {
     return <div>{error.message}</div>;
   }
 
-  const result = matjip.filter(jip => {
-    return jip.id === Number(param.id);
+  const [result] = matjip?.filter(jip => {
+    return jip.id == Number(param.id);
   });
 
   return (
@@ -50,16 +53,16 @@ const Form = props => {
         {isEdit ? (
           <div>
             <div className="bg-pink-300">작성자</div>
-            <span> {result[0].user}</span>
+            <span> {result.user}</span>
 
             <div className="bg-pink-300">맛집이름</div>
-            <span> {result[0].title}</span>
+            <span> {result.title}</span>
 
-            <span>{result[0].location}</span>
+            <span>{result.location}</span>
 
             <div className="bg-green-300">맛집후기</div>
             <input
-              defaultValue={result[0].content}
+              defaultValue={result.content}
               onChange={e => {
                 console.log(e.target.value);
                 setText(e.target.value);
@@ -69,20 +72,29 @@ const Form = props => {
         ) : (
           <div>
             <div className="bg-pink-300">작성자</div>
-            <span> {result[0].user}</span>
+            <span> {result.user}</span>
 
             <div className="bg-pink-300">맛집이름</div>
-            <span> {result[0].title}</span>
+            <span> {result.title}</span>
 
-            <span>{result[0].location}</span>
+            <span>{result.location}</span>
 
             <div className="bg-green-300">맛집후기</div>
-            <span> {result[0].content}</span>
+            <span> {result.content}</span>
+
+            <div>
+              <span
+                onClick={() => {
+                  아주좋아요(좋아요 + 1);
+                }}>
+                😆
+              </span>
+              {좋아요}
+            </div>
           </div>
         )}
         <Button onClick={togglelIsEdit}>{!isEdit ? '수정하기' : '저장하기'}</Button>
       </div>
-      {props.children}
     </div>
   );
 };
