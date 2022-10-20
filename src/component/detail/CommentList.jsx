@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { __getComment } from '../../store/modules/comment';
 import { useParams } from 'react-router-dom';
@@ -20,13 +19,10 @@ function CommnetList() {
   if (error) {
     return <div>{error.message}</div>;
   }
-  console.log(comment);
 
   const result = comment.filter(jip => {
     return jip.matjipId == Number(param.id);
   });
-
-  console.log(result);
 
   return (
     <div className="w-full m-auto">

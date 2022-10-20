@@ -14,6 +14,11 @@ const Form = () => {
   const [좋아요, 아주좋아요] = useState(0);
   const [text, setText] = useState('');
 
+  useEffect(() => {
+    console.log(1);
+    dispatch(__getOne());
+  }, [dispatch]);
+
   const togglelIsEdit = () => {
     if (isEdit) {
       const data = { ...result, content: text };
@@ -23,21 +28,18 @@ const Form = () => {
     setIsEdit(!isEdit);
   };
 
-  const { isLoading, error, matjip } = useSelector(state => state.matjip);
+  const data = useSelector(state => state.matjip);
+  console.log(data);
 
-  useEffect(() => {
-    dispatch(__getmatjip());
-  }, [dispatch]);
-
-  if (isLoading) {
+  if (data.isLoading) {
     return <div>로딩 중....</div>;
   }
 
-  if (error) {
-    return <div>{error.message}</div>;
+  if (data.error) {
+    return <div>{data.error.message}</div>;
   }
 
-  const [result] = matjip?.filter(jip => {
+  const [result] = data.matjip?.filter(jip => {
     return jip.id == Number(param.id);
   });
 
@@ -56,19 +58,19 @@ const Form = () => {
           <div>
             <div className="bg-pink-300 p-4 m-4">
               작성자
-              <span> {[result].user}</span>
+              <span> {result.user}</span>
             </div>
 
             <div className="bg-pink-300 p-4 m-4">
               맛집이름
-              <span> {[result].title}</span>
+              <span> {result.title}</span>
             </div>
 
-            <div className=" p-4 m-4">{[result].location}</div>
+            <div className=" p-4 m-4">{result.location}</div>
 
             <div className="bg-green-300">맛집후기</div>
             <input
-              defaultValue={[result].content}
+              defaultValue={result.content}
               onChange={e => {
                 console.log(e.target.value);
                 setText(e.target.value);
@@ -78,15 +80,15 @@ const Form = () => {
         ) : (
           <div>
             <div className="bg-pink-300">작성자</div>
-            <span> {[result].user}</span>
+            <span> {result?.user}</span>
 
             <div className="bg-pink-300">맛집이름</div>
-            <span> {[result].title}</span>
+            <span> {result?.title}</span>
 
-            <span>{[result].location}</span>
+            <span>{result?.location}</span>
 
             <div className="bg-green-300">맛집후기</div>
-            <span> {[result].content}</span>
+            <span> {result?.content}</span>
 
             <div>
               <span

@@ -4,7 +4,7 @@ import CommentInput from './CommentInput';
 import CommentList from './CommentList';
 
 const Comment = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   return (
     <div className="bg-green-400">
