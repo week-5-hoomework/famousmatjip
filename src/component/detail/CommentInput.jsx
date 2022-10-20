@@ -22,19 +22,8 @@ function CommentInput() {
       <form className="relative">
         <input ref={nicknameRef} type="text" placeholder="작성자" className="w-[40%] mr-3 p-2" />
 
-        <input ref={memoRef} type="text" placeholder="댓글내용" className="w-[40%] mr-3 p-2" />
-        <button
-          onClick={e => {
-            e.preventDefault();
-            const review = {
-              nickname: nicknameRef.current.value,
-              memo: memoRef.current.value,
-              matjipId: param.id,
-            };
-            console.log(review);
-            dispatch(__postComment(review));
-          }}
-          className="absolute top-0 right-4 bg-white p-2">
+        <input type="text" placeholder="댓글내용" className="w-[40%] mr-3 p-2" />
+        <button onClick={e => e.preventDefault()} className="absolute top-0 right-4 bg-white p-2">
           Save
         </button>
       </form>

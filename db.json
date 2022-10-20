@@ -99,21 +99,16 @@
     },
     {
       "id": 19
+    },
+    {
+      "user": "test1",
+      "location": "서울",
+      "title": "test2",
+      "content": "test3",
+      "id": 20
     }
   ],
   "comment": [
-    {
-      "matjipId": 1,
-      "id": 1,
-      "nickname": "진영이얌",
-      "memo": "진영이내용"
-    },
-    {
-      "matjipId": 1,
-      "id": 2,
-      "nickname": "상현이얌",
-      "memo": "최고야"
-    },
     {
       "matjipId": 1,
       "id": 3,
