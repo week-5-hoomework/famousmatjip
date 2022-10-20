@@ -1,7 +1,7 @@
 import React from "react";
 
-function Write() {
+const Header = () => {
   return <div></div>;
-}
+};
 
-export default Write;
+export default Header;

@@ -40,6 +40,34 @@ export const __patchMatjips = createAsyncThunk('patchMatjips', async (payload, t
   }
 });
 
+//진영 Thunk
+export const __getOne = createAsyncThunk(
+  "getOne", //이부분 matjip/getOne 해야하는지 ?
+  async (payload, thunkAPI) => {
+    try {
+      const data = await axios.get("http://localhost:3001/matjip");
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+//진영 Thunk
+export const __deleteOne = createAsyncThunk(
+  "deleteOne",
+  async (payload, thunkAPI) => {
+    try {
+      axios.delete(`http://localhost:3001/matjip/${payload}`);
+      return thunkAPI.fulfillWithValue(payload);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.code); //error라고 해야하나?
+    }
+  }
+);
+
+
+
 //리듀서
 const matjipSlice = createSlice({
   //기본 내장 함수다 변경 x
@@ -76,6 +104,33 @@ const matjipSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+
+    //여기서부터 made by 진영
+    [__getOne.pending]: (state) => {
+      state.isLoading = true;
+    },
+
+    [__getOne.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.matjip = [...action.payload];
+      console.log("fulfilled state.matjip", state.matjip);
+    },
+
+    [__getOne.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
+    [__deleteOne.pending]: () => {},
+
+    [__deleteOne.fulfilled]: (state, action) => {
+      console.log("deleteOne fullfilled 상태", action, action.payload);
+      state.matjip = state.matjip.filter((a) => {
+        return a.id !== action.payload;
+      });
+    },
+
+    [__deleteOne.rejected]: () => {},
   },
   //엑스트라 리듀서 설정해줘야한다.
 });
