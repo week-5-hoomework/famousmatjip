@@ -24,12 +24,6 @@
   ],
   "comment": [
     {
-      "matjipId": 1,
-      "id": 4,
-      "nickname": "경태얌",
-      "memo": "너희는 오늘 무사히 제룰할 것이다~!"
-    },
-    {
       "id": 5
     },
     {
@@ -78,12 +72,6 @@
       "nickname": "되라",
       "memo": "되라",
       "id": 16
-    },
-    {
-      "nickname": "ek",
-      "memo": "sdf",
-      "matjipId": "1",
-      "id": 17
     },
     {
       "nickname": "안뇽",
