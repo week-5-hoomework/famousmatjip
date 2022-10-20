@@ -14,7 +14,7 @@ export const __getOne = createAsyncThunk(
   'getOne', //이부분 matjip/getOne 해야하는지 ?
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get('http://localhost:3001/matjip');
+      const data = await axios.get('https://matjip.herokuapp.com/matjip');
       console.log(data.data);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
@@ -25,7 +25,7 @@ export const __getOne = createAsyncThunk(
 
 export const __deleteOne = createAsyncThunk('deleteOne', async (payload, thunkAPI) => {
   try {
-    axios.delete(`http://localhost:3001/matjip/${payload}`);
+    axios.delete(`https://matjip.herokuapp.com/matjip/${payload}`);
     return thunkAPI.fulfillWithValue(payload);
   } catch (error) {
     return thunkAPI.rejectWithValue(error.code); //error라고 해야하나?
@@ -52,7 +52,7 @@ export const __deleteOne = createAsyncThunk('deleteOne', async (payload, thunkAP
 
 export const __getmatjip = createAsyncThunk('getmatjips', async (payload, thunkAPI) => {
   try {
-    const data = await axios.get(`http://localhost:3001/matjip`);
+    const data = await axios.get(`https://matjip.herokuapp.com/matjip`);
     return thunkAPI.fulfillWithValue(data.data);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -63,7 +63,7 @@ export const __getmatjip = createAsyncThunk('getmatjips', async (payload, thunkA
 export const __patchMatjips = createAsyncThunk('patchMatjips', async (payload, thunkAPI) => {
   console.log(payload);
   try {
-    const data = await axios.patch(`http://localhost:3001/matjip/${payload.id}`, payload);
+    const data = await axios.patch(`https://matjip.herokuapp.com/${payload.id}`, payload);
     return thunkAPI.fulfillWithValue(payload);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);

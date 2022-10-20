@@ -3,7 +3,7 @@ import axios from 'axios';
 // 완성된 Thunk 함수
 export const __getCounter = createAsyncThunk('counter/getCounter', async (payload, thunkAPI) => {
   try {
-    const data = await axios.get('http://localhost:3001/matjip'); //countslice다시해보기
+    const data = await axios.get('https://matjip.herokuapp.com/matjip'); //countslice다시해보기
     return thunkAPI.fulfillWithValue(data.data); //성공했으면
   } catch (error) {
     //실패하면
@@ -15,7 +15,7 @@ export const __postCounter = createAsyncThunk('postCounter/getPostCounter', asyn
   // console.log(payload);
   // todo가 payload이다...그래서 밑에 ,todo적는것임
   try {
-    const data = await axios.post('http://localhost:3001/matjip', todo);
+    const data = await axios.post('https://matjip.herokuapp.com/matjip', todo);
     return thunkAPI.fulfillWithValue(data.data);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);

@@ -9,7 +9,7 @@ const initialState = {
 
 export const __getComment = createAsyncThunk('getComment', async (payload, thunkAPI) => {
   try {
-    const data = await axios.get(`http://localhost:3001/comment`);
+    const data = await axios.get(`https://matjip.herokuapp.com/comment`);
 
     return thunkAPI.fulfillWithValue(data.data);
   } catch (error) {
@@ -19,7 +19,7 @@ export const __getComment = createAsyncThunk('getComment', async (payload, thunk
 
 export const __editComment = createAsyncThunk('__editComment', async (payload, thunkAPI) => {
   try {
-    await axios.patch(`http://localhost:3001/comment/${payload.id}`, payload);
+    await axios.patch(`https://matjip.herokuapp.com/comment/${payload.id}`, payload);
     return thunkAPI.fulfillWithValue(payload);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -29,7 +29,7 @@ export const __editComment = createAsyncThunk('__editComment', async (payload, t
 //상현 delete 만들기
 export const __deleteComment = createAsyncThunk('deleteComment', async (payload, thunkAPI) => {
   try {
-    await axios.delete(`http://localhost:3001/comment/${payload}`);
+    await axios.delete(`https://matjip.herokuapp.com/comment/${payload}`);
     console.log(payload);
     return thunkAPI.fulfillWithValue(payload);
   } catch (error) {
@@ -40,7 +40,7 @@ export const __deleteComment = createAsyncThunk('deleteComment', async (payload,
 export const __postComment = createAsyncThunk('comment/post', async (payload, thunkAPI) => {
   //thunkAPI 찾아보기
   try {
-    const data = await axios.post(`http://localhost:3001/comment`, payload); //리듀서가 Thunk를 불러낸다. 5번
+    const data = await axios.post(`https://matjip.herokuapp.com/comment`, payload); //리듀서가 Thunk를 불러낸다. 5번
     return thunkAPI.fulfillWithValue(data.data); //데이터는 변수고 뒤에 있는 data는 담겨서 오는 key값이다.
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
