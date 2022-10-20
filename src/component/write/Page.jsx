@@ -23,9 +23,9 @@ const Page = () => {
     const { value } = evnet.target;
     // setNumber(+value);
   };
-  const onClickAddNumberHandler = () => {
-    //청크불러온것 //청크하나 추가될때마다 그 3개가 늘어난다
-  };
+  // const onClickAddNumberHandler = () => {
+  //   //청크불러온것 //청크하나 추가될때마다 그 3개가 늘어난다
+  // };
 
   //
   // 새롭게 생성하는 todo를 관리하는 state
@@ -67,6 +67,7 @@ const Page = () => {
   return (
     <>
       <form onSubmit={onSubmitHandler}>
+        <br />
         <input
           className="bg-gray-100 m-0 p-10"
           type="text"
@@ -75,6 +76,7 @@ const Page = () => {
             setTitle(value);
           }}
         />
+        작성자
         <br />
         <input
           className="bg-gray-100 m-0 p-10"
@@ -91,23 +93,21 @@ const Page = () => {
           onChange={(ev) => {
             const { value } = ev.target;
             setUser(value);
-          }} //useState로 각자
+          }}
         />
-        <button className="bg-gray-300">작성자🌝</button>
-      </form>
-      <select
-        onChange={(ev) => {
-          const { value } = ev.target;
-          setLocation(value);
-        }}
-      >
-        <option value="all">지역선택</option>
-        <option value="seoul">서울</option>
-        <option value="busan">부산</option>
-        <option value="daegu">대구</option>
-        <option value="jeju">제주</option>
-      </select>
-      <div>
+        <select
+          onChange={(ev) => {
+            const { value } = ev.target;
+            setLocation(value);
+          }}
+        >
+          <option value="all">지역선택</option>
+          <option value="seoul">서울</option>
+          <option value="busan">부산</option>
+          <option value="daegu">대구</option>
+          <option value="jeju">제주</option>
+        </select>
+        {/* <div>
         {number.map((todo) => (
           <div key={todo.id}>
             {todo.title}
@@ -122,7 +122,9 @@ const Page = () => {
             <button onClick={onClickAddNumberHandler}>더하기</button>
           </div>
         ))}
-      </div>
+      </div> */}
+        <button className="bg-gray-300">저장하기🌝</button>
+      </form>
     </>
   );
 };
