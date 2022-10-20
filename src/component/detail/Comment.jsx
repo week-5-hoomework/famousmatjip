@@ -7,15 +7,19 @@ const Comment = () => {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="StContainer w-4/5 m-auto">
-      <div
-        className="StToggleContainer"
-        onClick={() => {
-          setShow(show => !show);
-        }}>
-        <button className=" bg-slate-200">{show ? '댓글 내리기' : '댓글보기'}</button>
+    <div className="bg-green-400">
+      <div className="bg-yellow-100 w-4/5 m-auto py-4">
+        <div className="w-1/3 m-auto p-4">
+          <button
+            className="bg-slate-200 w-[100%]"
+            onClick={() => {
+              setShow(show => !show);
+            }}>
+            {show ? '댓글닫기' : '댓글보기'}
+          </button>
+        </div>
         {!show ? null : (
-          <div className="Daet">
+          <div className="w-4/5 m-auto">
             <CommentInput />
             <CommentList />
           </div>

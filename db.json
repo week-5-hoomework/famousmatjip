@@ -19,7 +19,7 @@
       "user": "상현",
       "location": "서울",
       "title": "공덕동 굴다리",
-      "content": "메니저님 고마워요"
+      "content": ""
     },
     {
       "id": 7,
@@ -103,28 +103,28 @@
   ],
   "comment": [
     {
+      "matjipId": 1,
+      "id": 1,
       "nickname": "진영이얌",
-      "memo": "수정하기",
-      "matjipId": 1,
-      "id": 1
+      "memo": "진영이내용"
     },
     {
+      "matjipId": 1,
+      "id": 2,
       "nickname": "상현이얌",
-      "memo": "최고야",
-      "matjipId": 1,
-      "id": 2
+      "memo": "최고야"
     },
     {
+      "matjipId": 1,
+      "id": 3,
       "nickname": "하은이얌",
-      "memo": "으라차차",
-      "matjipId": 1,
-      "id": 3
+      "memo": "으라차차"
     },
     {
-      "nickname": "경태얌",
-      "memo": "너희는 오늘 무사히 제룰할 것이다~!",
       "matjipId": 1,
-      "id": 4
+      "id": 4,
+      "nickname": "경태얌",
+      "memo": "너희는 오늘 무사히 제룰할 것이다~!"
     }
   ]
 }

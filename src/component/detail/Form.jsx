@@ -44,7 +44,7 @@ const Form = () => {
   console.log(result);
 
   return (
-    <div className=" w-2/4 m-auto">
+    <div className=" w-4/5 m-auto">
       <div className="bg-red-300 m-14 p-10">
         <div
           onClick={() => {
@@ -54,13 +54,17 @@ const Form = () => {
         </div>
         {isEdit ? (
           <div>
-            <div className="bg-pink-300">작성자</div>
-            <span> {[result].user}</span>
+            <div className="bg-pink-300 p-4 m-4">
+              작성자
+              <span> {[result].user}</span>
+            </div>
 
-            <div className="bg-pink-300">맛집이름</div>
-            <span> {[result].title}</span>
+            <div className="bg-pink-300 p-4 m-4">
+              맛집이름
+              <span> {[result].title}</span>
+            </div>
 
-            <span>{[result].location}</span>
+            <div className=" p-4 m-4">{[result].location}</div>
 
             <div className="bg-green-300">맛집후기</div>
             <input
