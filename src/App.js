@@ -1,4 +1,6 @@
-import Router from "./shared/Router";
+import Router from './shared/Router';
+import React, { useEffect, useState } from 'react';
+import Button from './component/Button';
 
 function App() {
   return (
@@ -11,3 +13,4 @@ function App() {
 //App이 최상위이다.
 
 export default App;
+//ClassName="py-2 px-4 font-semibold shadow-md rounded-lg hover:bg-green-700"
